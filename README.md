@@ -18,6 +18,18 @@ $  pnpm  install
 
 ```
 
+## Configuración
+
+IMPORTANTE: la aplicacación está hecha para soportar MongoDB, por lo que se debe ajustar el archivo
+.env con sus valores correspondientes.
+
+```
+MONGODB_URL = "PONER URL DE TU DB"
+JWT_SECRET_KEY = "PONER SECRETO PARA CREAR TOKEN"
+BASE_API_ENDPOINT = "https://swapi.dev/api" --> API de StarWars
+```
+
+
 ## Ejecutar aplicación
 
 ```bash
