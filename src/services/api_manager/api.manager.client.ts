@@ -16,7 +16,7 @@ export class ApiManagerClient {
   public async get(url: string, params?: object) {
     const request = async () =>
       this.axiosInstance.get(`${this.config.baseEndpoint}${url}`, {
-        timeout: 20000,
+        timeout: 30000,
         params,
       });
 

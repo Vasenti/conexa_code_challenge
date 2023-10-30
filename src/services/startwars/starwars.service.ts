@@ -14,7 +14,6 @@ export class StarwarsService {
     try {
       const { data }: AxiosResponse<IStarWarFilmResult> =
         await this.apiManagerClient.get(FILMS_PATH);
-      console.log(data);
       return toFilmEntity(data);
     } catch (error) {
       console.log(error);

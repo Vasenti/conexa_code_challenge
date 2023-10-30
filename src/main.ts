@@ -6,10 +6,18 @@ import { ControllersModule } from './controllers/controllers.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  const swaggerOptions = { docExpansion: 'none', filter: true };
+  const swaggerOptions = {
+    docExpansion: 'none',
+    filter: true,
+    persistAuthorization: true,
+  };
   const swaggerDoc = SwaggerModule.createDocument(
     app,
-    new DocumentBuilder().setTitle('Conexa API').setVersion('1.0').build(),
+    new DocumentBuilder()
+      .setTitle('Conexa API')
+      .setVersion('1.0')
+      .addBearerAuth()
+      .build(),
     { include: [ControllersModule] },
   );
 
