@@ -1,5 +1,5 @@
 import { Test } from '@nestjs/testing';
-import { GetAllFilms } from '../../../../../src/core/use_cases/films/get.all.films';
+import { GetAllFilms } from '../../../../../src/core/use_cases/films/get.all.api.films';
 import { StarwarsService } from '../../../../../src/services/startwars/starwars.service';
 import { FILMS } from '../__fixtures__/films.fixture';
 import { FilmsOutputDto } from '../../../../../src/core/dto/films/films.output.dto';

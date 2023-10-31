@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { StarwarsService } from '../../../services/startwars/starwars.service';
-import { toFilmOutput } from '../../entities/film';
 import { DomainError, DomainErrors } from '../../errors';
+import { toFilmsOutput } from '../../dto/films/films.output.dto';
 
 @Injectable()
-export class GetAllFilms {
+export class GetAllApiFilms {
   constructor(private readonly starwarsService: StarwarsService) {}
 
   async call() {
@@ -12,6 +12,6 @@ export class GetAllFilms {
 
     if (!films) throw new DomainError(DomainErrors.FILM_NOT_FOUND);
 
-    return toFilmOutput(films);
+    return toFilmsOutput(films);
   }
 }

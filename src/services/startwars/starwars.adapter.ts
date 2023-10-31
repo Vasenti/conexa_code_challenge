@@ -11,6 +11,12 @@ export const toFilmEntity = (data: IStarWarFilmResult): Film[] => {
     film.created = starWarFilmApi.created;
     film.edited = starWarFilmApi.edited;
     film.openingCrawl = starWarFilmApi.opening_crawl;
+    film.characters = starWarFilmApi.characters;
+    film.planets = starWarFilmApi.planets;
+    film.producer = starWarFilmApi.producer;
+    film.vehicles = starWarFilmApi.vehicles;
+    film.releaseDate = starWarFilmApi.release_date;
+    film.species = starWarFilmApi.species;
     return film;
   });
 

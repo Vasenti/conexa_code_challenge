@@ -5,7 +5,7 @@ import { FilmsOutputDto } from '../dto/films/films.output.dto';
 @Entity()
 export class Film extends BaseEntity {
   @ObjectIdColumn()
-  id: ObjectId;
+  _id: ObjectId;
 
   @Column({ nullable: false })
   title: string;
@@ -24,17 +24,25 @@ export class Film extends BaseEntity {
 
   @Column({ nullable: false })
   openingCrawl: string;
-}
 
-export const toFilmOutput = (films: Film[]): FilmsOutputDto[] => {
-  return films.map((film): FilmsOutputDto => {
-    return {
-      title: film.title,
-      director: film.director,
-      created: film.created,
-      edited: film.edited,
-      openingCrawl: film.openingCrawl,
-      url: film.url,
-    };
-  });
-};
+  @Column()
+  producer: string;
+
+  @Column()
+  releaseDate: string;
+
+  @Column()
+  characters: Array<string>;
+
+  @Column()
+  planets: Array<string>;
+
+  @Column()
+  starships: Array<string>;
+
+  @Column()
+  vehicles: Array<string>;
+
+  @Column()
+  species: Array<string>;
+}

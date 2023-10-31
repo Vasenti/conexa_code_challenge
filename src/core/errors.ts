@@ -19,6 +19,10 @@ export const ApiErrors = {
     message: 'Something has failed.',
     status: 500,
   },
+  INVALID_INPUT: {
+    code: 1004,
+    message: 'Invalid/Empty input',
+  },
 };
 
 export const AuthenticationErrors = {
@@ -39,6 +43,16 @@ export const FilmsErrors = {
     code: 3000,
     message: 'Film not found.',
     status: 404,
+  },
+  FAILED_CREATE_FILM: {
+    code: 3001,
+    message: 'Could not create a new film.',
+    status: 400,
+  },
+  FILM_INPUT_NOT_FOUND: {
+    code: 3002,
+    message: 'Should pass film input.',
+    status: 400,
   },
 };
 
