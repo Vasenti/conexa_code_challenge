@@ -1,18 +1,18 @@
 import { Test } from '@nestjs/testing';
-import { GetAllFilms } from '../../../../../src/core/use_cases/films/get.all.api.films';
+import { GetAllApiFilms } from '../../../../../src/core/use_cases/films/get.all.api.films';
 import { StarwarsService } from '../../../../../src/services/startwars/starwars.service';
 import { FILMS } from '../__fixtures__/films.fixture';
 import { FilmsOutputDto } from '../../../../../src/core/dto/films/films.output.dto';
 import { DomainError, DomainErrors } from '../../../../../src/core/errors';
 
 describe('GetAllFilms', () => {
-  let getAllFilms: GetAllFilms;
+  let getAllFilms: GetAllApiFilms;
   let starWarsService: StarwarsService;
 
   beforeEach(async () => {
     const module = await Test.createTestingModule({
       providers: [
-        GetAllFilms,
+        GetAllApiFilms,
         {
           provide: StarwarsService,
           useValue: { getFilms: () => FILMS },
@@ -20,7 +20,7 @@ describe('GetAllFilms', () => {
       ],
     }).compile();
 
-    getAllFilms = module.get<GetAllFilms>(GetAllFilms);
+    getAllFilms = module.get<GetAllApiFilms>(GetAllApiFilms);
     starWarsService = module.get<StarwarsService>(StarwarsService);
   });
 
@@ -31,7 +31,7 @@ describe('GetAllFilms', () => {
     });
 
     it('should throw error FILM_NOT_FOUND', async () => {
-      jest.spyOn(starWarsService, 'getFilms').mockResolvedValueOnce([]);
+      jest.spyOn(starWarsService, 'getFilms').mockResolvedValueOnce(null);
 
       await expect(getAllFilms.call()).rejects.toThrowError(
         new DomainError(DomainErrors.FILM_NOT_FOUND),
