@@ -4,11 +4,18 @@ import { SuccessOutputDto } from '../../dto/success.out.dto';
 import { EntityService } from '../../../services/database/entity.service';
 import { User } from '../../entities/user';
 import { genSalt, hash } from 'bcrypt';
+import { DomainError, DomainErrors } from '../../errors';
 
 @Injectable()
 export class PostRegister {
   constructor(private readonly entityService: EntityService) {}
   async call(userInput: PostRegisterInputDto): Promise<SuccessOutputDto> {
+    const user = await this.entityService.find(User, {
+      email: userInput.email,
+    });
+
+    if (user) throw new DomainError(DomainErrors.USER_ALREADY_EXISTS);
+
     const salt = await genSalt(10);
     const password = await hash(userInput.password, salt);
 

@@ -46,6 +46,7 @@ export class PostRegisterInputDto {
   @ApiProperty({
     description: 'User role',
     example: 'ROLE_1',
+    enum: ROLES,
   })
   @IsNotEmpty()
   role: Role[];

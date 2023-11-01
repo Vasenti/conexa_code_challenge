@@ -31,6 +31,11 @@ export const AuthenticationErrors = {
     message: 'User not found.',
     status: 404,
   },
+  USER_ALREADY_EXISTS: {
+    code: 2001,
+    message: 'User already exist.',
+    status: 400,
+  },
   AUTH_ERROR: {
     code: 2001,
     message: 'The provided email or password is invalid.',
